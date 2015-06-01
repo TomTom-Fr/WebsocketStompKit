@@ -369,7 +369,7 @@ CFAbsoluteTime serverActivity;
     NSMutableDictionary *msgHeaders = [NSMutableDictionary dictionaryWithDictionary:headers];
     msgHeaders[kHeaderDestination] = destination;
     if (body) {
-        msgHeaders[kHeaderContentLength] = [NSNumber numberWithLong:[body length]];
+        msgHeaders[kHeaderContentLength] = [NSNumber numberWithLong:[body lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
     }
     [self sendFrameWithCommand:kCommandSend
                        headers:msgHeaders
