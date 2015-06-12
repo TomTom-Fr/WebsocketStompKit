@@ -542,6 +542,8 @@ CFAbsoluteTime serverActivity;
             self.errorHandler(error);
         }
     }
+    
+    self.connectionCompletionHandler = nil;
 }
 
 #pragma mark -
