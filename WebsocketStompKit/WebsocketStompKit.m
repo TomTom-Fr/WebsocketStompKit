@@ -54,7 +54,7 @@
 #pragma mark -
 #pragma mark STOMP Client private interface
 
-@interface STOMPClient()
+@interface STOMPClient () <JFRWebSocketDelegate>
 
 @property (nonatomic, retain) JFRWebSocket *socket;
 @property (nonatomic, copy) NSURL *url;
@@ -477,8 +477,8 @@ CFAbsoluteTime serverActivity;
     NSInteger pingTTL = ceil(MAX(cx, sy) / 1000);
     NSInteger pongTTL = ceil(MAX(sx, cy) / 1000);
     
-    LogDebug(@"send heart-beat every %ld seconds", pingTTL);
-    LogDebug(@"expect to receive heart-beats every %ld seconds", pongTTL);
+    LogDebug(@"send heart-beat every %ld seconds", (long)pingTTL);
+    LogDebug(@"expect to receive heart-beats every %ld seconds", (long)pongTTL);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (pingTTL > 0) {
